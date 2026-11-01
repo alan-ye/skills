@@ -1,0 +1,3 @@
+interface:
+  display_name: "External Executor"
+  short_description: "Dispatch a ticket to another agent CLI"

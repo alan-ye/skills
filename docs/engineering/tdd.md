@@ -74,6 +74,10 @@ Into [codebase-design](https://aihero.dev/skills-codebase-design) in v1.0, gener
 
 No. Run against one ticket, it can propose work that belongs to a sibling ticket, because it has no view of the rest of the issue graph ([issue #129](https://github.com/mattpocock/skills/issues/129)). This is not `tdd`'s job. Passing the spec alongside the ticket helps; right-sizing the tickets in the first place helps more.
 
+**What happens in a headless run, where nobody can confirm a seam?**
+
+The seams named in the spec's Testing Decisions, the ticket or the dispatch brief count as confirmed, and the agent builds against them. When none of those names a seam, it stops and reports the missing seam as a blocker instead of picking one. This is why seams belong in [to-spec](https://aihero.dev/skills-to-spec) before any ticket goes to an [AFK](https://www.aihero.dev/ai-coding-dictionary/afk) implementer.
+
 ## It's working if
 
 - It stops and names the seams it intends to test at, and waits, before any test file exists.
