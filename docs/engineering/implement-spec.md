@@ -71,6 +71,10 @@ A worktree holds only what git tracks. Tests that read gitignored fixtures, loca
 
 Yes. When you or the ticket ask for one, the orchestrator calls [external-executor](https://aihero.dev/skills-external-executor) for that ticket. The CLI works headless in the ticket's worktree; the orchestrator verifies the result and makes the commit, so the branch lands on the integration branch like any other. The full test suite still runs once, on the integration branch, before the review.
 
+**What goes in the PR body?**
+
+The summary of the spec's change notes: each ticket lands with a one-to-three-line note, and at close-out [change-notes](https://aihero.dev/skills-change-notes) groups them by kind, breaking changes first. Add the full-suite result and the code-review totals beneath it. The notes replace long per-ticket write-ups, so nothing in the summary is a pasted log.
+
 ## It's working if
 
 - Several implementers are running at once whenever the graph allows, not one after another.

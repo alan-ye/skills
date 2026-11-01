@@ -31,6 +31,8 @@ The route most work travels. You have an idea and want it built.
 
    When the implementer should be another harness's CLI (Codex, pi, Kimi Code, MiniMax Code), **`/external-executor`** runs it headless on one ticket in its own worktree while you keep verification and git. `/implement-spec` calls it per ticket when asked to; reach for it directly for a single ticket or bounded task.
 
+   Each landed ticket carries a one-to-three-line change note, and the close-out summarizes them into the PR body: that is **`/change-notes`**, which also ships a check that keeps tracker files free of pasted logs.
+
    When the work goes up as a pull request, **`/pr`** shapes the body: the smallest visual that shows the change, before/after evidence that it works, and a one-way or two-way door call. It's model-invoked, so the agent reaches for it whenever it writes a PR.
 
 4. **`/retro`** closes the loop. After a build, and especially one that went sideways, it looks back over the session and suggests changes to the agent's **environment**, not the code: navigation pointers, automated checks, the coding standards `/code-review` enforces, steering files, tooling. Mechanical mistakes become deterministic checks; judgement calls become coding standards. The next build then starts from a better environment.

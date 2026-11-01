@@ -17,15 +17,21 @@
   - `BRIEF.md`：brief、result、feedback 的格式。
   - `scripts/dispatch.sh`：统一的派发脚本（兼容 macOS 自带的 bash 3.2，带超时和进程组清理，日志写文件，只输出摘要）。
 - `docs/engineering/external-executor.md`：对应的 docs 页面。
+- `skills/engineering/change-notes/`：每张 ticket 落地时写 1 到 3 行变更说明，收尾时汇总成 PR 描述，再加一个确定性检查。思路借鉴上游发版流程里的 changesets。
+  - `SKILL.md`：变更说明的格式、写的时机和存放位置（`.scratch/<feature>/changes/`）。
+  - `scripts/summarize.sh`：把一个 feature 的变更说明汇总成 `## Changes` 段落，破坏性变更排在最前面。
+  - `scripts/check.sh`：检查 ticket 行数上限、禁止贴日志（终端颜色码、堆栈、npm 报错、测试失败块、超过 40 行的代码块）、已完成的 ticket 必须有变更说明。建议接到项目的 pre-commit 或 CI 里。
+- `docs/engineering/change-notes.md`：对应的 docs 页面。
 - `FORK.md`：本文件。
 
 修改（每处只加一两句）：
 
-- `skills/engineering/implement-spec/SKILL.md`：第 4 步允许按需把 ticket 交给 `external-executor`；第 7 步在代码审查前，于集成分支上只跑一次全量测试。
+- `skills/engineering/implement-spec/SKILL.md`：第 4 步允许按需把 ticket 交给 `external-executor`，每个执行方随代码一起提交变更说明；第 7 步在代码审查前，于集成分支上只跑一次全量测试；第 8 步把变更说明汇总进 PR 描述或最终报告。
+- `skills/engineering/external-executor/SKILL.md`：第 7 步落地时写变更说明（属于本 fork 新增的 skill，列在这里是为了说明它和 change-notes 的关系）。
 - `skills/engineering/tdd/SKILL.md`：无头或 AFK 运行时，spec 的 Testing Decisions、ticket 或 brief 里写明的接缝视为已确认；都没写时报告 blocked，不自己挑接缝。
-- `skills/engineering/ask-matt/SKILL.md`：路由里加入 `external-executor`。
-- `README.md`、`skills/engineering/README.md`、`.claude-plugin/plugin.json`：登记新 skill。
-- `docs/engineering/implement-spec.md`、`docs/engineering/tdd.md`：各加一条常见问题，与行为变化同步。
+- `skills/engineering/ask-matt/SKILL.md`：路由里加入 `external-executor` 和 `change-notes`。
+- `README.md`、`skills/engineering/README.md`、`.claude-plugin/plugin.json`：登记两个新 skill。
+- `docs/engineering/implement-spec.md`、`docs/engineering/tdd.md`：补充常见问题，与行为变化同步。
 
 没有添加 changeset：本 fork 不走上游的发版流程，改动记录以本文件为准。
 

@@ -65,9 +65,9 @@ Done when verification passes, or the ticket is handed off with its findings.
 
 ### 7. Land
 
-Commit the ticket's changes in the worktree with the ticket's title as the subject (`.executor-run/` is already excluded from git), then merge the integration branch tip into the ticket branch so landing it is a fast-forward. Report the branch to whoever dispatched you, and remove the worktree once the branch has landed.
+Call the Skill tool with `change-notes` and write the ticket's change note. Commit it together with the ticket's changes in the worktree, with the ticket's title as the subject (`.executor-run/` is already excluded from git), then merge the integration branch tip into the ticket branch so landing it is a fast-forward. Report the branch to whoever dispatched you, and remove the worktree once the branch has landed.
 
-Done when the ticket branch holds one verified commit on top of the integration tip.
+Done when the ticket branch holds one verified commit, change note included, on top of the integration tip.
 
 ## Token economy
 

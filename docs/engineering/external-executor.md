@@ -51,6 +51,7 @@ CLI flags drift between releases. Check the CLI's `--help` against `CLIS.md`, th
 - Every ticket's commit was made by the orchestrator after it ran the ticket's checks itself.
 - A failed check comes back as a resume of the same session with a `feedback.md`, not as a fresh start.
 - Several tickets on the frontier run at once, each in its own worktree.
+- Every landed ticket's commit includes its [change note](https://aihero.dev/skills-change-notes).
 
 ## Where it fits
 
