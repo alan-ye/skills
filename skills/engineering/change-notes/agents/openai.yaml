@@ -1,0 +1,3 @@
+interface:
+  display_name: "Change Notes"
+  short_description: "Per-ticket change notes and tracker checks"

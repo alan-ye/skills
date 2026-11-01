@@ -29,14 +29,17 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 4. Use a fresh **implementer subagent** for each ticket, each in its own worktree on its own branch. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket;
+   - calls the Skill tool with `change-notes` and commits the ticket's change note with its work;
    - merges the integration branch tip into its own branch before reporting done
+
+   When a ticket should be built by an external coding-agent CLI (Codex, pi, Kimi Code, MiniMax Code), because the user or the ticket asks for one, call the Skill tool with `external-executor` for that ticket instead of starting an implementer subagent. It prepares the worktree on the integration branch, dispatches the CLI, verifies the work and commits it, so the ticket's branch lands in step 5 like any other.
 
 5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**.
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** to work on the new tickets. This allows for maximum concurrency.
 
-7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Fix all issues raised by the code review in a single fresh **implementer subagent**.
+7. Once all tickets are complete, run the full test suite once on the integration branch, then call the Skill tool with `code-review` on it. Fix all issues raised by the code review in a single fresh **implementer subagent**.
 
-8. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
+8. Call the Skill tool with `change-notes` to summarize the spec's change notes, and put the summary in the PR body or the final report. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
 
 9. Clean up all **implementer subagent** worktrees.
